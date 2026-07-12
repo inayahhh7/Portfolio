@@ -424,7 +424,6 @@
             }
         }
 
-        /* ============ REVEAL (always visible, no animation) ============ */
         .reveal {
             opacity: 1;
             transform: none;
@@ -913,20 +912,17 @@
         }
         .project-tile {
             height: 170px;
-            display: grid;
-            place-items: center;
-            font-size: 2.6rem;
-            color: #fff;
-            position: relative;
             overflow: hidden;
-        }
-        .project-tile i {
             position: relative;
-            z-index: 1;
+        }
+        .project-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform .5s ease;
         }
-        .project-card:hover .project-tile i {
-            transform: scale(1.15) rotate(-4deg);
+        .project-card:hover .project-tile img {
+            transform: scale(1.15) rotate(-2deg);
         }
         .project-body {
             padding: 24px;
@@ -1339,7 +1335,6 @@
                 <div class="about-grid">
                     <div class="bio-card reveal d1">
                         <div class="who">
-                            <!-- Avatar placeholder rapi, tidak perlu file gambar eksternal -->
                             <div class="avatar-placeholder">P</div>
                             <div>
                                 <h3>Putri Nur Inayah</h3>
@@ -1581,7 +1576,7 @@
         });
         document.querySelectorAll('.mobile-link').forEach(el => el.addEventListener('click', closeMenu));
 
-        /* ---------- skills marquee data (frontend only) ---------- */
+        /* ---------- skills marquee data ---------- */
         const skills = [
             { name: 'HTML5', icon: 'fa-brands fa-html5', color: '#E34F26' },
             { name: 'CSS3', icon: 'fa-brands fa-css3-alt', color: '#1572B6' },
@@ -1607,12 +1602,11 @@
         ];
         fillRow(document.getElementById('row-2'), extraSkills);
 
-        /* ---------- projects (frontend design) ---------- */
+        /* ---------- projects with images ---------- */
         const projects = [{
             title: 'Landing Page UMKM',
             desc: 'Website responsif untuk bisnis kopi lokal, menonjolkan produk dan cerita brand.',
-            icon: 'fa-solid fa-store',
-            tint: '#E34F26',
+            image: 'https://picsum.photos/seed/umkm/400/300',
             tech: [
                 ['HTML5', 'fa-brands fa-html5'],
                 ['CSS3', 'fa-brands fa-css3-alt'],
@@ -1622,8 +1616,7 @@
         }, {
             title: 'Redesign Dashboard Admin',
             desc: 'UI baru untuk panel admin, fokus pada kemudahan navigasi dan tampilan data.',
-            icon: 'fa-solid fa-chart-pie',
-            tint: '#4F46E5',
+            image: 'https://picsum.photos/seed/dashboard/400/300',
             tech: [
                 ['CSS3', 'fa-brands fa-css3-alt']
             ],
@@ -1631,8 +1624,7 @@
         }, {
             title: 'Portfolio Fotografer',
             desc: 'Tema portfolio interaktif dengan galeri foto dan animasi scroll halus.',
-            icon: 'fa-solid fa-camera-retro',
-            tint: '#7C3AED',
+            image: 'https://picsum.photos/seed/fotografer/400/300',
             tech: [
                 ['HTML5', 'fa-brands fa-html5'],
                 ['JavaScript', 'fa-brands fa-js'],
@@ -1645,14 +1637,15 @@
             const card = document.createElement('div');
             card.className = `project-card reveal d${(i % 3) + 1}`;
             card.innerHTML = `
-            <div class="project-tile" style="background:linear-gradient(135deg, ${p.tint}, ${p.tint}CC)"><i class="${p.icon}"></i></div>
+            <div class="project-tile">
+              <img src="${p.image}" alt="${p.title}" loading="lazy">
+            </div>
             <div class="project-body">
               <h3>${p.title}</h3>
               <p class="desc">${p.desc}</p>
               <div class="tech-row">${p.tech.map(t => `<span class="tech-chip"><i class="${t[1]}"></i>${t[0]}</span>`).join('')}</div>
               <div class="project-foot">
                 <span class="status-tag">${p.status}</span>
-                <a href="#" class="detail-link">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
               </div>
             </div>
           `;
