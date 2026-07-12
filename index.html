@@ -717,10 +717,17 @@
             gap: 14px;
             margin-bottom: 20px;
         }
-        .bio-card .who img {
+        .bio-card .who .avatar-placeholder {
             width: 52px;
             height: 52px;
             border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
         }
         .bio-card .who h3 {
             font-size: 1.05rem;
@@ -1332,7 +1339,8 @@
                 <div class="about-grid">
                     <div class="bio-card reveal d1">
                         <div class="who">
-                            <img src="assets/images.png" alt="Ilustrasi avatar Putri Nur Inayah">
+                            <!-- Avatar placeholder rapi, tidak perlu file gambar eksternal -->
+                            <div class="avatar-placeholder">P</div>
                             <div>
                                 <h3>Putri Nur Inayah</h3>
                                 <p>Banjarmasin, Indonesia</p>
@@ -1434,7 +1442,7 @@
                             </div>
                         </div>
                         <div class="map-card">
-                            <iframe title="Lokasi peta Jakarta" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            <iframe title="Lokasi peta Banjarmasin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2034.0194541406142!2d114.58972892270548!3d-3.296401997024764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1783837984967!5m2!1sid!2sid"></iframe>
                         </div>
                     </div>
@@ -1649,7 +1657,6 @@
             </div>
           `;
             projectsGrid.appendChild(card);
-            // No JS tilt animation — clean static cards
         });
 
         /* ---------- extra skills (diluar kode) ---------- */
